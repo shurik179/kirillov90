@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schedule — Kirillov 90</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #b8963e;
+    --gold-light: #d4af6a;
+    --cream: #f9f6ef;
+    --cream-dark: #ede8da;
+    --text: #2c2c2c;
+    --text-light: #5a5a5a;
+    --rule: #b8963e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    color: var(--text);
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background-color: var(--navy);
+    color: var(--cream);
+    text-align: center;
+    padding: 56px 24px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(184,150,62,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse at 30% 80%, rgba(184,150,62,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .header-rule {
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 28px;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 44px);
+    font-weight: 400;
+    line-height: 1.25;
+    max-width: 780px;
+    margin: 0 auto 18px;
+    color: #fff;
+  }
+
+  header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: var(--gold-light);
+    max-width: 640px;
+    margin: 0 auto 32px;
+  }
+
+  .header-rule-bottom {
+    width: 120px;
+    height: 1px;
+    background: rgba(184,150,62,0.5);
+    margin: 0 auto 28px;
+  }
+
+  .meta-block {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    text-align: center;
+  }
+
+  .meta-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .meta-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #fff;
+  }
+
+  /* ── MAIN CONTENT ── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  .section {
+    margin-bottom: 32px;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .section-heading h2 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .section-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+  }
+
+  .schedule-container {
+    display: flex;
+    gap: 48px;
+    max-width: 1200px;
+  }
+
+  .schedule-column {
+    flex: 1;
+  }
+
+  .column-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--navy);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .day-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--navy);
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  .schedule-row {
+    display: flex;
+    gap: 40px;
+    margin: 4px 0;
+    align-items: baseline;
+    border-bottom: 1px solid #e5dfd2;
+    padding-bottom: 3px;
+  }
+
+  .time {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gold);
+    min-width: 100px;
+  }
+
+  .speaker {
+    font-size: 15px;
+    color: var(--text);
+    font-family: 'EB Garamond', serif;
+  }
+
+  .break {
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 14px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(249,246,239,0.5);
+    text-align: center;
+    padding: 28px 24px;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  footer span {
+    color: var(--gold);
+  }
+
+  .back-link {
+    display: inline-block;
+    padding: 14px 32px;
+    background-color: var(--navy);
+    color: var(--gold-light);
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border: 2px solid var(--gold);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  .back-link:hover {
+    background-color: var(--gold);
+    color: var(--navy);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-rule"></div>
+  <h1>Representation Theory, Geometry &amp; Mathematical Physics</h1>
+  <h2>A Conference in Honor of Alexandre Kirillov's 90th Birthday</h2>
+  <div class="header-rule-bottom"></div>
+  <div class="meta-block">
+    <div class="meta-item">
+      <span class="meta-label">Date</span>
+      <span class="meta-value">May 26–31, 2026</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Venue</span>
+      <span class="meta-value">Simons Center for Geometry and Physics</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section">
+    <div class="section-heading"><h2>Schedule</h2></div>
+
+    <div class="schedule-container">
+      <!-- LEFT COLUMN: IN-PERSON TALKS -->
+      <div class="schedule-column">
+        <div class="column-title">In-Person Talks</div>
+
+        <div class="day-heading">Tuesday, May 26</div>
+        <div class="schedule-row">
+          <div class="time">9:30–10:30</div>
+          <div class="speaker">Leonid Makar-Limanov</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time"></div>
+          <div class="break">Coffee break</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">11:00–12:00</div>
+          <div class="speaker">Alexander Goncharov</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time"></div>
+          <div class="break">Lunch</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">1:15–2:15</div>
+          <div class="speaker">Igor Frenkel</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time"></div>
+          <div class="break">Break</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">2:30–3:30</div>
+          <div class="speaker">Vera Serganova</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time"></div>
+          <div class="break">Coffee break</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">4:00–5:00</div>
+          <div class="speaker">Arkady Berenstein</div>
+        </div>
+
+        <div class="day-heading">Wednesday, May 27</div>
+        <div class="schedule-row">
+          <div class="time">9:30–10:30</div>
+          <div class="speaker">Dennis Sullivan</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time"></div>
+          <div class="break">Coffee break</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">11:00–12:00</div>
+          <div class="speaker">Valentin Ovsienko</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time"></div>
+          <div class="break">Lunch</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">1:15–2:15</div>
+          <div class="speaker">Michael Pevzner</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time"></div>
+          <div class="break">Break</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">2:30–3:30</div>
+          <div class="speaker">Vladimir Retakh</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time"></div>
+          <div class="break">Coffee break</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">4:00–5:00</div>
+          <div class="speaker">Leon Takhtajan</div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: ZOOM TALKS -->
+      <div class="schedule-column">
+        <div class="column-title">Zoom Talks</div>
+        <p style="color: var(--text-light); font-size: 13px; margin-bottom: 12px; font-style: italic;">Times in EDT</p>
+
+        <div class="day-heading">Thursday, May 28</div>
+        <div class="schedule-row">
+          <div class="time">6:00 PM</div>
+          <div class="speaker">Dmitry Fuchs</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">7:00 PM</div>
+          <div class="speaker">Alexander Molev</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">8:00 PM</div>
+          <div class="speaker">Andrei Okounkov</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">9:00 PM</div>
+          <div class="speaker">Nikolai Reshetikhin</div>
+        </div>
+
+        <div class="day-heading">Friday, May 29</div>
+        <div class="schedule-row">
+          <div class="time">9:00 AM</div>
+          <div class="speaker">Nikita Nekrasov</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">10:00 AM</div>
+          <div class="speaker">Sergey Khoroshkin</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">11:00 AM</div>
+          <div class="speaker">Maxim Kontsevich</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">12:00 PM</div>
+          <div class="speaker">Victor Ginzburg</div>
+        </div>
+
+        <div class="day-heading">Sunday, May 31</div>
+        <div class="schedule-row">
+          <div class="time">9:00 AM</div>
+          <div class="speaker">Grigori Olshanski</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">10:00 AM</div>
+          <div class="speaker">Joseph Bernstein</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">11:00 AM</div>
+          <div class="speaker">David Kazhdan</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">12:00 PM</div>
+          <div class="speaker">Yury Neretin</div>
+        </div>
+        <div class="schedule-row">
+          <div class="time">2:00 PM</div>
+          <div class="speaker">Simon Gindikin</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <div style="text-align: center; margin-top: 48px; padding-top: 32px; border-top: 1px solid #d5cdb8;">
+    <a href="https://shurik179.github.io/kirillov90/" class="back-link">← Back to Main Page</a>
+  </div>
+
+</main>
+
+<footer>
+  Representation Theory, Geometry, and Mathematical Physics &nbsp;·&nbsp; May 26–31, 2026 &nbsp;·&nbsp; Simons Center for Geometry and Physics, Stony Brook
+</footer>
+
+</body>
+</html>

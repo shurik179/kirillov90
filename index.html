@@ -222,7 +222,7 @@
   }
 
   .speaker-card {
-    padding: 20px 24px;
+    padding: 14px 16px;
     border-bottom: 1px solid #d5cdb8;
     border-right: 1px solid #d5cdb8;
     transition: background 0.2s;
@@ -234,15 +234,15 @@
 
   .speaker-name {
     font-family: 'Playfair Display', serif;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 400;
     color: var(--navy);
-    margin-bottom: 2px;
+    margin-bottom: 1px;
   }
 
   .speaker-inst {
     font-family: 'Lato', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 300;
     color: var(--text-light);
     letter-spacing: 0.5px;
@@ -329,6 +329,26 @@
     text-decoration: underline;
   }
 
+  .schedule-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background-color: var(--navy);
+    color: var(--gold-light);
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border: 2px solid var(--gold);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  .schedule-btn:hover {
+    background-color: var(--gold);
+    color: var(--navy);
+  }
+
   /* ── FOOTER ── */
   footer {
     background: var(--navy);
@@ -405,6 +425,10 @@
 
     <p style="margin: 1rem 0 1.5rem;">In-person talks will be given on May 26–27. Zoom talks will be given in the following days (to be determined).</p>
 
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <a href="https://shurik179.github.io/kirillov90/schedule.html" class="schedule-btn">View Full Schedule</a>
+    </div>
+
     <h3 style="margin: 1.5rem 0 1rem; font-size: 1.15rem; color: #444;">In-Person Talks</h3>
     <div class="speakers-grid">
 
@@ -474,8 +498,18 @@
       </div>
 
       <div class="speaker-card">
+        <div class="speaker-name">Simon Gindikin</div>
+        <div class="speaker-inst">Rutgers University</div>
+      </div>
+
+      <div class="speaker-card">
         <div class="speaker-name">Victor Ginzburg</div>
         <div class="speaker-inst">University of Chicago</div>
+      </div>
+
+      <div class="speaker-card">
+        <div class="speaker-name">Simon Gindikin</div>
+        <div class="speaker-inst">Rutgers</div>
       </div>
 
       <div class="speaker-card">
